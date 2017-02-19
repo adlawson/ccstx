@@ -11,3 +11,9 @@ lazy val rootSettings = Seq(
 lazy val ccstx = (project in file("."))
   .settings(rootSettings: _*)
   .settings(ignoreArtifact: _*)
+  .aggregate(rsps3018)
+
+lazy val rsps3018 = (project in file("rsps3018"))
+  .settings(rootSettings: _*)
+  .settings(name := "ccstx-rsps3018")
+  .settings(libraryDependencies ++= Dependencies.rsps3018)
