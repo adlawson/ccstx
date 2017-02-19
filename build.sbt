@@ -1,6 +1,7 @@
 import sbt.Keys._
 import io.otrl.ccstx.project._
 import io.otrl.ccstx.project.ProjectSettings._
+import scala.xml.XML
 
 lazy val rootSettings = Seq(
   organization := "io.otrl",
@@ -17,3 +18,6 @@ lazy val rsps3018 = (project in file("rsps3018"))
   .settings(rootSettings: _*)
   .settings(name := "ccstx-rsps3018")
   .settings(libraryDependencies ++= Dependencies.rsps3018)
+  .settings(sourceGenerators in Compile += (sourceManaged in Compile).map(
+    CcstXmlGenerator.gen(_, XML.loadFile("project/ccst.xml"), "io.otrl.ccstx.rsps3018")
+  ).taskValue)
