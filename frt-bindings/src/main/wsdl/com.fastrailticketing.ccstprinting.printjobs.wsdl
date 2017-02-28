@@ -3,8 +3,8 @@
   <wsdl:import namespace="https://ccstprinting.fastrailticketing.com" location="https://otrl-ccstprinting.fastrailticketing.com/PrintJobs.svc?wsdl=wsdl0"/>
   <wsdl:types>
     <xsd:schema targetNamespace="ccstprinting.fastrailticketing.com/Imports">
-      <xsd:import schemaLocation="https://otrl-ccstprinting.fastrailticketing.com/PrintJobs.svc?xsd=xsd0" namespace="ccstprinting.fastrailticketing.com"/>
-      <xsd:import schemaLocation="https://otrl-ccstprinting.fastrailticketing.com/PrintJobs.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+      <xsd:import schemaLocation="../xsd/com.fastrailticketing.ccstprinting.xsd" namespace="ccstprinting.fastrailticketing.com"/>
+      <xsd:import schemaLocation="../xsd/com.microsoft.schemas.xsd" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IPrintJobs_createJob_InputMessage">
@@ -79,8 +79,74 @@
       <wsdl:output wsaw:Action="ccstprinting.fastrailticketing.com/IPrintJobs/getRemoteSpoolersResponse" message="tns:IPrintJobs_getRemoteSpoolers_OutputMessage"/>
     </wsdl:operation>
   </wsdl:portType>
+  <wsdl:binding name="PrintJobsAPISoap" type="tns:IPrintJobs">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="createJob">
+      <soap:operation soapAction="createJob"/>
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createRemoteJob">
+      <soap:operation soapAction="createRemoteJob"/>
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getTicketStocks">
+      <soap:operation soapAction="getTicketStocks"/>
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDeliveryChannels">
+      <soap:operation soapAction="getDeliveryChannels"/>
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDeliveryCountries">
+      <soap:operation soapAction="getDeliveryCountries"/>
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getDeliveryMethods">
+      <soap:operation soapAction="getDeliveryMethods"/>
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRemoteSpoolers">
+      <soap:operation soapAction="getRemoteSpoolers"/>
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
   <wsdl:service name="PrintJobsAPISoap">
-    <wsdl:port name="PrintJobsAPISoap" binding="i0:PrintJobsAPISoap">
+    <wsdl:port name="PrintJobsAPISoap" binding="tns:PrintJobsAPISoap">
       <soap:address location="https://otrl-ccstprinting.fastrailticketing.com/PrintJobs.svc"/>
     </wsdl:port>
   </wsdl:service>

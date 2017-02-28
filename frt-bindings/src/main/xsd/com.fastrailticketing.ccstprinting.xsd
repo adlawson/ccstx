@@ -4,7 +4,7 @@
   <xs:element name="createJob">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="ccstprinting.fastrailticketing.com" minOccurs="1" name="job" nillable="true" type="q1:createJobReq"/>
+        <xs:element xmlns:q1="ccstprinting.fastrailticketing.com" minOccurs="1" name="job" nillable="false" type="q1:createJobReq"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -106,7 +106,7 @@
   <xs:element name="createRemoteJob">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q21="ccstprinting.fastrailticketing.com" minOccurs="1" name="job" nillable="true" type="q21:createRemoteJobReq"/>
+        <xs:element xmlns:q21="ccstprinting.fastrailticketing.com" minOccurs="1" name="job" nillable="false" type="q21:createRemoteJobReq"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -249,7 +249,7 @@
   <xs:element name="getDeliveryMethods">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="1" name="CountryCode" nillable="true" type="xs:string"/>
+        <xs:element minOccurs="1" name="CountryCode" nillable="false" type="xs:string"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
