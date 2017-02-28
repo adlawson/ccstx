@@ -19,6 +19,7 @@ lazy val frtBindings = (project in file("frt-bindings"))
   .settings(name := "frt-bindings")
   .settings(libraryDependencies ++= Dependencies.frtBindings)
   .settings(scalaxbPackageName in (Compile, scalaxb) := "com.fastrailticketing.ccstprinting")
+  .settings(scalacOptions ~= (_.filterNot("-Ywarn-unused-import" == _)))
   .enablePlugins(ScalaxbPlugin)
 
 lazy val rsps3018 = (project in file("rsps3018"))
