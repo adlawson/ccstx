@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" elementFormDefault="qualified" targetNamespace="ccstprinting.fastrailticketing.com">
+  <xs:import schemaLocation="https://otrl-ccstprinting.fastrailticketing.com/PrintJobs.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/"/>
+  <xs:element name="createJob">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="ccstprinting.fastrailticketing.com" minOccurs="1" name="job" nillable="true" type="q1:createJobReq"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="createJobReq">
+    <xs:sequence>
+      <xs:element name="orderID" nillable="true" type="xs:string"/>
+      <xs:element name="deliveryChannelCode" nillable="true" type="xs:string"/>
+      <xs:element name="deliveryMethodCode" nillable="true" type="xs:string"/>
+      <xs:element name="deliveryNameAddress" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="deliveryCountryCode" nillable="true" type="xs:string"/>
+      <xs:element name="CCSTXversion" nillable="true" type="xs:string"/>
+      <xs:element xmlns:q2="ccstprinting.fastrailticketing.com" name="ticketList" nillable="true" type="q2:ArrayOfticketData"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q3="ccstprinting.fastrailticketing.com" name="createJobReq" nillable="true" type="q3:createJobReq"/>
+  <xs:complexType name="ArrayOfticketData">
+    <xs:sequence>
+      <xs:element xmlns:q4="ccstprinting.fastrailticketing.com" minOccurs="0" maxOccurs="unbounded" name="ticketData" nillable="true" type="q4:ticketData"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q5="ccstprinting.fastrailticketing.com" name="ArrayOfticketData" nillable="true" type="q5:ArrayOfticketData"/>
+  <xs:complexType name="ticketData">
+    <xs:sequence>
+      <xs:element name="ticketFormat" nillable="true" type="xs:string"/>
+      <xs:element name="stockCode" nillable="true" type="xs:string"/>
+      <xs:element xmlns:q6="ccstprinting.fastrailticketing.com" name="fieldList" nillable="true" type="q6:ArrayOffieldData"/>
+      <xs:element xmlns:q7="ccstprinting.fastrailticketing.com" name="suppressLiteralsList" nillable="true" type="q7:ArrayOfliteralData"/>
+      <xs:element name="suppressBoxPrinting" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="barcodeData" nillable="true" type="xs:string"/>
+      <xs:element name="magneticsData" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q8="ccstprinting.fastrailticketing.com" name="ticketData" nillable="true" type="q8:ticketData"/>
+  <xs:complexType name="ArrayOffieldData">
+    <xs:sequence>
+      <xs:element xmlns:q9="ccstprinting.fastrailticketing.com" minOccurs="0" maxOccurs="unbounded" name="fieldData" nillable="true" type="q9:fieldData"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q10="ccstprinting.fastrailticketing.com" name="ArrayOffieldData" nillable="true" type="q10:ArrayOffieldData"/>
+  <xs:complexType name="fieldData">
+    <xs:sequence>
+      <xs:element name="ID" nillable="true" type="xs:string"/>
+      <xs:element name="text" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="emphasis" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q11="ccstprinting.fastrailticketing.com" name="fieldData" nillable="true" type="q11:fieldData"/>
+  <xs:complexType name="ArrayOfliteralData">
+    <xs:sequence>
+      <xs:element xmlns:q12="ccstprinting.fastrailticketing.com" minOccurs="0" maxOccurs="unbounded" name="literalData" nillable="true" type="q12:literalData"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q13="ccstprinting.fastrailticketing.com" name="ArrayOfliteralData" nillable="true" type="q13:ArrayOfliteralData"/>
+  <xs:complexType name="literalData">
+    <xs:sequence>
+      <xs:element name="ID" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q14="ccstprinting.fastrailticketing.com" name="literalData" nillable="true" type="q14:literalData"/>
+  <xs:element name="createJobResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="ccstprinting.fastrailticketing.com" minOccurs="0" name="createJobResult" nillable="true" type="q15:createJobResp"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="createJobResp">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q16="ccstprinting.fastrailticketing.com" base="q16:baseResp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="transactionData" nillable="true" type="q16:transactionData"/>
+          <xs:element minOccurs="0" name="trackingInfo" nillable="true" type="q16:trackingData"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q17="ccstprinting.fastrailticketing.com" name="createJobResp" nillable="true" type="q17:createJobResp"/>
+  <xs:complexType name="baseResp">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="responseCode" type="xs:int"/>
+      <xs:element minOccurs="0" name="responseMessage" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q18="ccstprinting.fastrailticketing.com" name="baseResp" nillable="true" type="q18:baseResp"/>
+  <xs:complexType name="transactionData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="received" type="xs:dateTime"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q19="ccstprinting.fastrailticketing.com" name="transactionData" nillable="true" type="q19:transactionData"/>
+  <xs:complexType name="trackingData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="number" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="URL" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q20="ccstprinting.fastrailticketing.com" name="trackingData" nillable="true" type="q20:trackingData"/>
+  <xs:element name="createRemoteJob">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="ccstprinting.fastrailticketing.com" minOccurs="1" name="job" nillable="true" type="q21:createRemoteJobReq"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="createRemoteJobReq">
+    <xs:sequence>
+      <xs:element name="orderID" nillable="true" type="xs:string"/>
+      <xs:element name="orderDescription" nillable="true" type="xs:string"/>
+      <xs:element name="remoteSpoolerID" type="ser:guid"/>
+      <xs:element minOccurs="0" name="CCSTXversion" nillable="true" type="xs:string"/>
+      <xs:element xmlns:q22="ccstprinting.fastrailticketing.com" name="ticketList" nillable="true" type="q22:ArrayOfticketData"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q23="ccstprinting.fastrailticketing.com" name="createRemoteJobReq" nillable="true" type="q23:createRemoteJobReq"/>
+  <xs:element name="createRemoteJobResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="ccstprinting.fastrailticketing.com" minOccurs="0" name="createRemoteJobResult" nillable="true" type="q24:createRemoteJobResp"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="createRemoteJobResp">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q25="ccstprinting.fastrailticketing.com" base="q25:baseResp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="transactionData" nillable="true" type="q25:transactionData"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q26="ccstprinting.fastrailticketing.com" name="createRemoteJobResp" nillable="true" type="q26:createRemoteJobResp"/>
+  <xs:element name="getTicketStocks">
+    <xs:complexType>
+      <xs:sequence/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getTicketStocksResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="ccstprinting.fastrailticketing.com" minOccurs="0" name="getTicketStocksResult" nillable="true" type="q27:getTicketStocksResp"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="getTicketStocksResp">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q28="ccstprinting.fastrailticketing.com" base="q28:baseResp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="stockList" nillable="true" type="q28:ArrayOfticketStockData"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q29="ccstprinting.fastrailticketing.com" name="getTicketStocksResp" nillable="true" type="q29:getTicketStocksResp"/>
+  <xs:complexType name="ArrayOfticketStockData">
+    <xs:sequence>
+      <xs:element xmlns:q30="ccstprinting.fastrailticketing.com" minOccurs="0" maxOccurs="unbounded" name="ticketStockData" nillable="true" type="q30:ticketStockData"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q31="ccstprinting.fastrailticketing.com" name="ArrayOfticketStockData" nillable="true" type="q31:ArrayOfticketStockData"/>
+  <xs:complexType name="ticketStockData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="code" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="rspCode" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="magStripe" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q32="ccstprinting.fastrailticketing.com" name="ticketStockData" nillable="true" type="q32:ticketStockData"/>
+  <xs:element name="getDeliveryChannels">
+    <xs:complexType>
+      <xs:sequence/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getDeliveryChannelsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="ccstprinting.fastrailticketing.com" minOccurs="0" name="getDeliveryChannelsResult" nillable="true" type="q33:getDelvieryChannelsResp"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="getDelvieryChannelsResp">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q34="ccstprinting.fastrailticketing.com" base="q34:baseResp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="deliveryChannelsList" nillable="true" type="q34:ArrayOfdeliveryChannelData"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q35="ccstprinting.fastrailticketing.com" name="getDelvieryChannelsResp" nillable="true" type="q35:getDelvieryChannelsResp"/>
+  <xs:complexType name="ArrayOfdeliveryChannelData">
+    <xs:sequence>
+      <xs:element xmlns:q36="ccstprinting.fastrailticketing.com" minOccurs="0" maxOccurs="unbounded" name="deliveryChannelData" nillable="true" type="q36:deliveryChannelData"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q37="ccstprinting.fastrailticketing.com" name="ArrayOfdeliveryChannelData" nillable="true" type="q37:ArrayOfdeliveryChannelData"/>
+  <xs:complexType name="deliveryChannelData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="code" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="createHeaderCoupons" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="headerCouponStockCode" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q38="ccstprinting.fastrailticketing.com" name="deliveryChannelData" nillable="true" type="q38:deliveryChannelData"/>
+  <xs:element name="getDeliveryCountries">
+    <xs:complexType>
+      <xs:sequence/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getDeliveryCountriesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="ccstprinting.fastrailticketing.com" minOccurs="0" name="getDeliveryCountriesResult" nillable="true" type="q39:getDelvieryCountriesResp"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="getDelvieryCountriesResp">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q40="ccstprinting.fastrailticketing.com" base="q40:baseResp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="deliveryCountriesList" nillable="true" type="q40:ArrayOflistItem"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q41="ccstprinting.fastrailticketing.com" name="getDelvieryCountriesResp" nillable="true" type="q41:getDelvieryCountriesResp"/>
+  <xs:complexType name="ArrayOflistItem">
+    <xs:sequence>
+      <xs:element xmlns:q42="ccstprinting.fastrailticketing.com" minOccurs="0" maxOccurs="unbounded" name="listItem" nillable="true" type="q42:listItem"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q43="ccstprinting.fastrailticketing.com" name="ArrayOflistItem" nillable="true" type="q43:ArrayOflistItem"/>
+  <xs:complexType name="listItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="code" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q44="ccstprinting.fastrailticketing.com" name="listItem" nillable="true" type="q44:listItem"/>
+  <xs:element name="getDeliveryMethods">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="1" name="CountryCode" nillable="true" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getDeliveryMethodsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q45="ccstprinting.fastrailticketing.com" minOccurs="0" name="getDeliveryMethodsResult" nillable="true" type="q45:getDelvieryMethodsResp"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="getDelvieryMethodsResp">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q46="ccstprinting.fastrailticketing.com" base="q46:baseResp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="deliveryCountry" nillable="true" type="q46:listItem"/>
+          <xs:element minOccurs="0" name="deliveryMethodList" nillable="true" type="q46:ArrayOflistItem"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q47="ccstprinting.fastrailticketing.com" name="getDelvieryMethodsResp" nillable="true" type="q47:getDelvieryMethodsResp"/>
+  <xs:element name="getRemoteSpoolers">
+    <xs:complexType>
+      <xs:sequence/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="getRemoteSpoolersResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="ccstprinting.fastrailticketing.com" minOccurs="0" name="getRemoteSpoolersResult" nillable="true" type="q48:getRemoteSpoolersResp"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:complexType name="getRemoteSpoolersResp">
+    <xs:complexContent mixed="false">
+      <xs:extension xmlns:q49="ccstprinting.fastrailticketing.com" base="q49:baseResp">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="remoteSpoolersList" nillable="true" type="q49:ArrayOfremoteSpoolerData"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:element xmlns:q50="ccstprinting.fastrailticketing.com" name="getRemoteSpoolersResp" nillable="true" type="q50:getRemoteSpoolersResp"/>
+  <xs:complexType name="ArrayOfremoteSpoolerData">
+    <xs:sequence>
+      <xs:element xmlns:q51="ccstprinting.fastrailticketing.com" minOccurs="0" maxOccurs="unbounded" name="remoteSpoolerData" nillable="true" type="q51:remoteSpoolerData"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q52="ccstprinting.fastrailticketing.com" name="ArrayOfremoteSpoolerData" nillable="true" type="q52:ArrayOfremoteSpoolerData"/>
+  <xs:complexType name="remoteSpoolerData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="spoolerID" type="ser:guid"/>
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="IPaddress" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="SystemID" nillable="true" type="xs:string"/>
+      <xs:element minOccurs="0" name="enforceOrangeStock" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="createHeaderCoupons" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="headerCouponStockCode" nillable="true" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element xmlns:q53="ccstprinting.fastrailticketing.com" name="remoteSpoolerData" nillable="true" type="q53:remoteSpoolerData"/>
+</xs:schema>
