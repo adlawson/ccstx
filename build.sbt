@@ -12,7 +12,14 @@ lazy val rootSettings = Seq(
 lazy val ccstx = (project in file("."))
   .settings(rootSettings: _*)
   .settings(ignoreArtifact: _*)
-  .aggregate(rsps3018)
+  .aggregate(frtBindings, rsps3018)
+
+lazy val frtBindings = (project in file("frt-bindings"))
+  .settings(rootSettings: _*)
+  .settings(name := "frt-bindings")
+  .settings(libraryDependencies ++= Dependencies.frtBindings)
+  .settings(scalaxbPackageName in (Compile, scalaxb) := "com.fastrailticketing.ccstprinting")
+  .enablePlugins(ScalaxbPlugin)
 
 lazy val rsps3018 = (project in file("rsps3018"))
   .settings(rootSettings: _*)
